@@ -17,7 +17,7 @@ function Comments({id}) {
   return (
     <div>
       
-      <Button onClick={() => handleClick(id)} variant="outline-primary">Комментарии</Button>{' '}
+      <Button onClick={() => handleClick(id)} variant="primary" size="sm">Комментарии</Button>
       {data && isClicked && data.map(comment => <Comment key={comment.id} name={comment.name} body={comment.body}/>)}
     </div>
   )

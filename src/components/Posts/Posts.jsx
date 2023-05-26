@@ -15,7 +15,7 @@ function Posts() {
     <div>
         {loading && 'Loading...'}
 
-      {data && !loading && data.slice(0,10).map(data => {
+      {data && !loading && data.map(data => {
         return <Post postId={data.id} title={data.title} body={data.body} userId={data.userId}/>
         })
       }
