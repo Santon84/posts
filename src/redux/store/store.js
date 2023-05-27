@@ -1,6 +1,5 @@
 import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 
-import { todoReducer } from "./todo";
 import { userReducer } from './user'
 import createSagaMiddleware from 'redux-saga';
 import { watcherSaga } from "../sagas/rootSaga";
@@ -9,7 +8,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
     reducer: {
         user: userReducer, 
-        todo: todoReducer,
+        
     }, middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 })
 

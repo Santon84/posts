@@ -14,6 +14,7 @@ function User() {
     
     const user = useSelector((state) => state.user.user)
     const error = useSelector((state) => state.user.errorMessage)
+    const loading = useSelector((state) => state.user.isLoading)
     const todo = useSelector((state) => state.todo)
     const { userId } = useParams();
     const fetchUrl = API_URL_POSTS+'?userid='+userId
@@ -34,7 +35,7 @@ function User() {
     }, [todo])
 return (
     <div>
-    {/* {loading && 'Loading...'} */}
+    {loading && 'Loading...'}
     {error && <p>{error}</p>}
     {user && (<div className='ml-4'>
                 <Avatar />

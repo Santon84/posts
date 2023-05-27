@@ -1,6 +1,7 @@
 export const GET_USER = "GET_USER";
 export const SET_USER = "SET_USER";
-export const SET_USER_ERROR = "SET_USER_ERROR";
+export const GET_USER_ERROR = "SET_USER_ERROR";
+export const GET_USER_END = "GET_USER_END";
 
 export const getUser = (action) => ({
     type: GET_USER,
@@ -12,7 +13,8 @@ export const setUser = (user) => ({
 })
 const initialState = { 
     user: undefined,
-    errorMessage: ''
+    errorMessage: '',
+    isLoading: false
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -21,8 +23,13 @@ export const userReducer = (state = initialState, action) => {
         case SET_USER:
             const { user } = action;
             return {...state, user}
-        case SET_USER_ERROR:
-            return {...state, errorMessage: action.payload}
+        case GET_USER:
+            return {...state, isLoading: true}
+        case GET_USER_END :
+            return {...state, isLoading: false}
+        case GET_USER_ERROR:
+            return {...state, errorMessage: action.payload, isLoading: false}
+
         default: 
             return state;
     }
