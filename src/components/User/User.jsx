@@ -5,48 +5,52 @@ import { API_URL_POSTS, API_URL_USER } from '../../api/api';
 import Post from '../Posts/Post';
 import Avatar from '../Posts/Avatar';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import { setUser, getUser } from '../../redux/store/user';
-
+import { requestGetUser2 } from '../../redux/requests/user';
 
 function User() {
+    
     const dispatch = useDispatch();
+    
     const user = useSelector((state) => state.user.user)
+    const error = useSelector((state) => state.user.errorMessage)
+    const todo = useSelector((state) => state.todo)
     const { userId } = useParams();
     const fetchUrl = API_URL_POSTS+'?userid='+userId
-    const {data, loading, error} = useFetch(API_URL_USER+userId);
+    //const {data, loading, error} = useFetch(API_URL_USER+userId);
     const {data:posts} = useFetch(fetchUrl);
-    if(error){
-        console.log(error)
-    }
+    // if(error){
+    //     console.log(error)
+    // }
     
-    function handleClick(user) {
-        dispatch(setUser(user))
-    }
+    
 
     useEffect(() => {
-        dispatch(getUser(userId))
-        //console.log(user)
-    },[])
+        dispatch(getUser(userId,dispatch))
+        return () => dispatch(setUser(null));
+    },[userId, dispatch])
+    useEffect(() => {
+        console.log(todo);
+    }, [todo])
 return (
     <div>
-    {loading && 'Loading...'}
-    {data && !loading && (<>
+    {/* {loading && 'Loading...'} */}
+    {error && <p>{error}</p>}
+    {user && (<div className='ml-4'>
                 <Avatar />
-                <h2>{data.name}</h2>
-                <p>{data.email}</p>
-                <Button onClick={() => handleClick({id:1, name: 'Anton'})} variant="primary" size="sm">Добавить пользователя</Button>
-                {user?.name}
-                </>) }
+                <h2>{user.name}</h2>
+                <p>{user.email}</p>
                 
-    {posts && !loading && posts.map(post => (
+                </div>) }
+                
+    {posts && posts.map(post => (
         <>
         <h6 className='mt-5'>Посты пользователя:</h6>
         <Post key={post.id} postId={post.id} title={post.title} body={post.body} userId={post.userId}/>
         </>
     )
      )}
-    {error && 'No user found'} 
+    {/* {error && 'No user found'}  */}
       
     </div>
   )

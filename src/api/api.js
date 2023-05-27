@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 export const API_URL_POSTS = 'https://jsonplaceholder.typicode.com/posts/'
 export const API_URL_USER = 'https://jsonplaceholder.typicode.com/users/'
@@ -8,5 +9,12 @@ export const getAllPosts = async () =>
     await axios.get('https://jsonplaceholder.typicode.com/posts')
 
 
-export const getUser = async (id) => 
-    await axios.get('https://jsonplaceholder.typicode.com/users/'+id)
+export const getUser = async (id,dispatch) => {
+   
+   dispatch({ type: 'GET_TODOS_REQUEST' });
+    return await axios.get('https://jsonplaceholder.typicode.com/users/'+id)
+      .then((response) => dispatch({ type: 'GET_TODOS_SUCCESS', payload: response }))
+      .catch((error) => dispatch({ type: 'GET_TODOS_FAILURE', payload: error, error: true }));
+  }; 
+
+

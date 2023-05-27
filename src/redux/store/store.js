@@ -1,14 +1,15 @@
 import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 
-
-import userReducer from './user'
+import { todoReducer } from "./todo";
+import { userReducer } from './user'
 import createSagaMiddleware from 'redux-saga';
 import { watcherSaga } from "../sagas/rootSaga";
 const sagaMiddleware = createSagaMiddleware();
 //const middleware = [sagaMiddleware];
 const store = configureStore({
     reducer: {
-        user: userReducer,
+        user: userReducer, 
+        todo: todoReducer,
     }, middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 })
 

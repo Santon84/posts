@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import { requestGetUser } from '../requests/user';
-import { setUser } from '../store/user';
+import { SET_USER_ERROR, setUser } from '../store/user';
 
 
 export function* handleGetUser(action) {
@@ -10,6 +10,7 @@ export function* handleGetUser(action) {
         const { data } = response;
         yield put(setUser(data))
     }catch (err) {
-    console.log(err)
+        console.log(err.message)
+        yield put({type: SET_USER_ERROR, payload: err.message})
     }
 }
