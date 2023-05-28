@@ -1,13 +1,16 @@
 import axios from "axios";
-
-export const requestGetUser = async (id) => 
-    await axios.get('https://jsonplaceholder.typicode.com/users/'+id)
+import { API_URL_POSTS, API_URL_USER, API_URL_USER_POSTS } from '../../api/api'
 
 
-// export const requestGetUser = async (id,dispatch) => {
-   
-//     dispatch({ type: 'GET_TODOS_REQUEST' });
-//      return await axios.get('https://jsonplaceholder.typicode.com/users/'+id)
-//        .then((response) => dispatch({ type: 'GET_TODOS_SUCCESS', payload: response }))
-//        .catch((error) => dispatch({ type: 'GET_TODOS_FAILURE', payload: error, error: true }));
-//    }; 
+export const requestGetUser = async (userId) => 
+    await axios.get(API_URL_USER+userId)
+
+
+export const requestGetUserPosts = async (userId) => 
+    await axios.get(API_URL_USER_POSTS+userId)  
+
+
+export const requestGetAllPosts = async () => 
+    await axios.get(API_URL_POSTS)  
+    
+    

@@ -5,7 +5,7 @@ function Comment({name, body}) {
   return (
     <Card className='m-4'>
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
+        <Card.Title style={{fontSize:'.9rem'}}>{name}</Card.Title>
         <Card.Text>{body}</Card.Text>
       </Card.Body>
     </Card>
