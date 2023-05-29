@@ -6,7 +6,6 @@ import { SET_POSTS_END, SET_POSTS_ERROR, setPosts } from '../store/posts';
 
 export function* handleGetUser(action) {
     try {
-        //console.log(action.action)
         const response = yield call(requestGetUser, action.action)
         const { data } = response;
         yield put(setUser(data))
@@ -27,7 +26,9 @@ export function* handleGetUserPosts(action) {
         console.log(err.message)
         yield put({type: GET_USER_POSTS_ERROR, payload: err.message})
     }finally {
-        yield put({type: GET_USER_POSTS_END})
+       
+          yield put({type: GET_USER_POSTS_END})
+       
     }
 }
 

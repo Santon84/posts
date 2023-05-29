@@ -14,10 +14,9 @@ export const setUserPosts = (userPosts) => ({
 const initialState = { 
     userPosts: undefined,
     errorMessage: '',
-    isLoading: false
+    isLoading: true
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export const userPostsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_POSTS:

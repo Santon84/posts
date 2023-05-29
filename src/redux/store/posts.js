@@ -3,6 +3,7 @@ export const SET_POSTS = "SET_POSTS";
 export const SET_POSTS_ERROR = "GET_POSTS_ERROR";
 export const SET_POSTS_END = "GET_POSTS_END";
 export const SET_POSTS_CURRENT_PAGE = "SET_POSTS_CURRENT_PAGE";
+export const SET_POSTS_LOADING = "SET_POSTS_LOADING";
 
 export const getPosts = () => ({
     type: GET_POSTS,
@@ -28,6 +29,8 @@ export const postsReducer = (state = initialState, action) => {
             return {...state, posts}
         case GET_POSTS:
             return {...state, isLoading: true}
+        case SET_POSTS_LOADING:
+                return {...state, isLoading: true}
         case SET_POSTS_END :
             return {...state, isLoading: false}
         case SET_POSTS_ERROR:

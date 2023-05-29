@@ -24,13 +24,10 @@ function UserPosts({userId}) {
       
       {error && <p>{error}</p>}
       <h6 className='mt-5'>Посты пользователя:</h6>
-      {loading && 'Loading...'}
       {userPosts && userPosts.map(post => (
-        
         <Post key={post.id} postId={post.id} title={post.title} body={post.body} userId={post.userId}/>
-        
-    )
-     )}
+        )
+       )}
     </>
   )
 }

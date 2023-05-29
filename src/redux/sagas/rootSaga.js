@@ -1,4 +1,4 @@
-import { takeEvery, takeLatast } from 'redux-saga/effects'
+import { takeEvery } from 'redux-saga/effects'
 import { handleGetAllPosts, handleGetUser, handleGetUserPosts } from '../handlers/user'
 import { GET_USER } from '../store/user'
 import { GET_USER_POSTS } from '../store/userPosts'

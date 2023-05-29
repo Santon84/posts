@@ -6,7 +6,6 @@ import { watcherPosts, watcherUser, watcherUserPosts } from "../sagas/rootSaga";
 import { userPostsReducer } from "./userPosts";
 import { postsReducer } from "./posts";
 const sagaMiddleware = createSagaMiddleware();
-//const middleware = [sagaMiddleware];
 const store = configureStore({
     reducer: {
         user: userReducer, 
