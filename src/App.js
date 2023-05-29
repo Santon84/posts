@@ -3,11 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import Posts from "./components/Posts/Posts";
 import About from "./components/About/About";
 import User from "./components/User/User";
+import Menu from "./components/Navbar/Menu";
 
 function App() {
   return (
+    
     <div className="App">
-      <Header/>
+      <Menu />
       <Routes>
                   
                   <Route path="/" element={<Posts/>} />

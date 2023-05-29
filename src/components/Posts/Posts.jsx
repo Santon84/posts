@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import PaginationBlock from '../Pagination/PaginationBlock';
 function Posts() {
     
-    // getAllPosts().then(data => setPosts(data.data));
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.posts.posts)
     
